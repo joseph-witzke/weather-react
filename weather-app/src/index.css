@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box; /*only be as big as the width I've given, if I give you padding or I give you a border apply it within your width not in addition to it*/
+  max-width: 100%; /*You can never be bigger than your parent*/
+}
+
+/*General Styles*/
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  line-height: 1.5; /*no unit of measurement here*/
+  color: #4f4f4f;
+}
+h1 {
+  font-family: sans-serif;
+  font-size: 6rem;
+}
+a {
+  text-decoration: none;
+  color: #4f4f4f;
+}
+section {
+  padding: 4% 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
