@@ -1,6 +1,5 @@
 //IMPORTS
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 //STYLES
 import './App.css';
@@ -8,6 +7,7 @@ import './App.css';
 //COMPONENTS
 import Header from './components/Header';
 import Footer from './components/Footer';
+import CurrentWeather from './components/CurrentWeather';
 
 //API KEY
 const api = {
@@ -98,7 +98,8 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <h2>{dateBuilder(new Date())}</h2>
+      <CurrentWeather date={dateBuilder} data={weather} />
+      {/* <h2>{dateBuilder(new Date())}</h2>
       {typeof weather.main != 'undefined' ? (
         <div>
           <div>{weather.name}</div>
@@ -112,7 +113,7 @@ function App() {
         </div>
       ) : (
         ''
-      )}
+      )} */}
       <Footer />
     </div>
   );
