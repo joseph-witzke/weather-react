@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`${api.base}/weather?q=Paris&appid=${api.key}`)
+      .get(`${api.base}/weather?q=Paris&appid=${api.key}&units=imperial`)
       .then((res) => {
         setWeather(res.data);
         setTemp(res.data.main);
@@ -78,7 +78,7 @@ function App() {
       <h1>Weather App</h1>
       <h2>{dateBuilder(new Date())}</h2>
       <div>{weather.name}</div>
-      <div>{Math.round(temp.temp)}</div>
+      <div>{Math.round(temp.temp)} &deg;F</div>
       <div>
         <img
           src={`http://openweathermap.org/img/w/${icon}.png`}
