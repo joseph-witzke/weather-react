@@ -13,22 +13,23 @@ import Footer from './components/Footer';
 const api = {
   key: '73039893ace3b87894afbabe8d916a2d',
   base: 'https://api.openweathermap.org/data/2.5',
-  city: 'Paris',
 };
 
 function App() {
   const [weather, setWeather] = useState([]);
+  const [temp, setTemp] = useState('');
+  const [icon, setIcon] = useState('');
 
   useEffect(() => {
     axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=73039893ace3b87894afbabe8d916a2d`
-      )
+      .get(`${api.base}/weather?q=Paris&appid=${api.key}`)
       .then((res) => {
-        console.log(res);
+        setWeather(res.data);
+        setTemp(res.data.main);
+        setIcon(res.data.weather[0].icon);
       })
       .catch((err) => {
-        console.log(err);
+        console.log({ message: err });
       });
   }, []);
 
@@ -76,6 +77,14 @@ function App() {
       <Header />
       <h1>Weather App</h1>
       <h2>{dateBuilder(new Date())}</h2>
+      <div>{weather.name}</div>
+      <div>{Math.round(temp.temp)}</div>
+      <div>
+        <img
+          src={`http://openweathermap.org/img/w/${icon}.png`}
+          alt='weather icon'
+        />
+      </div>
       <Footer />
     </div>
   );
