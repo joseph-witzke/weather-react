@@ -3,8 +3,8 @@ import React from 'react';
 function Footer() {
   return (
     <div>
-      <div class='footer-padding'></div>
-      <div class='footer'>
+      <div className='footer-padding'></div>
+      <div className='footer'>
         <p>Made with ❤️ by Joe Witzke</p>
       </div>
     </div>

@@ -1,5 +1,6 @@
 //IMPORTS
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 //STYLES
 import './App.css';
@@ -8,8 +9,28 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+//API KEY
+const api = {
+  key: '73039893ace3b87894afbabe8d916a2d',
+  base: 'https://api.openweathermap.org/data/2.5',
+  city: 'Paris',
+};
+
 function App() {
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=73039893ace3b87894afbabe8d916a2d`
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const getPosition = () => {
     return new Promise(function (resolve, reject) {

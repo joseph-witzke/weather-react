@@ -2,12 +2,12 @@ import React from 'react';
 
 function Header() {
   return (
-    <nav class='navbar navbar-default'>
-      <div class='container'>
-        <div class='navbar-header'>
-          <p class='navbar-brand'>WEATHER</p>
+    <nav className='navbar navbar-default'>
+      <div className='container'>
+        <div className='navbar-header'>
+          <p className='navbar-brand'>WEATHER</p>
         </div>
-        <ul class='nav navbar-nav navbar-right'>
+        <ul className='nav navbar-nav navbar-right'>
           <li id='home'>
             <a href='/'>HOME</a>
           </li>
