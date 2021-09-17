@@ -17,27 +17,50 @@ const api = {
 
 function App() {
   const [weather, setWeather] = useState([]);
-  const [temp, setTemp] = useState('');
-  const [icon, setIcon] = useState('');
+  const [lat, setLat] = useState([]);
+  const [long, setLong] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${api.base}/weather?q=Paris&appid=${api.key}&units=imperial`)
-      .then((res) => {
-        setWeather(res.data);
-        setTemp(res.data.main);
-        setIcon(res.data.weather[0].icon);
-      })
-      .catch((err) => {
-        console.log({ message: err });
+    const getWeather = async () => {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
       });
-  }, []);
+      await fetch(
+        `${api.base}/weather?lat=${lat}&lon=${long}&units=imperial&appid=${api.key}`
+      )
+        .then((res) => res.json())
+        .then((result) => {
+          setWeather(result);
+          console.log(result);
+        });
+    };
+    getWeather();
+  }, [lat, long]);
 
-  const getPosition = () => {
-    return new Promise(function (resolve, reject) {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
-  };
+  // const getWeather = (lat, lon) => {
+  //   axios
+  //     .get(`${api.base}/weather?lat=${lat}&lon=${lon}&appid=${api.key}`)
+  //     .then((res) => {
+  //       setWeather(res.data);
+  //       setTemp(res.data.main);
+  //       setIcon(res.data.weather[0].icon);
+  //       setLocation(res.data.coord);
+  //     })
+  //     .catch((err) => {
+  //       console.log({ message: err });
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   getPosition()
+  //     .then((position) => {
+  //       getWeather(location.lat, location.lon);
+  //     })
+  //     .catch((err) => {
+  //       console.log({ message: err });
+  //     });
+  // }, []);
 
   const dateBuilder = (item) => {
     let months = [
@@ -75,16 +98,21 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <h1>Weather App</h1>
       <h2>{dateBuilder(new Date())}</h2>
-      <div>{weather.name}</div>
-      <div>{Math.round(temp.temp)} &deg;F</div>
-      <div>
-        <img
-          src={`http://openweathermap.org/img/w/${icon}.png`}
-          alt='weather icon'
-        />
-      </div>
+      {typeof weather.main != 'undefined' ? (
+        <div>
+          <div>{weather.name}</div>
+          <div>{Math.round(weather.main.temp)} &deg;F</div>
+          <div>
+            <img
+              src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
+              alt='weather icon'
+            />
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
       <Footer />
     </div>
   );
