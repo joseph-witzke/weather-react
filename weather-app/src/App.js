@@ -11,6 +11,12 @@ import Footer from './components/Footer';
 function App() {
   const [weather, setWeather] = useState({});
 
+  const getPosition = () => {
+    return new Promise(function (resolve, reject) {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+  };
+
   const dateBuilder = (item) => {
     let months = [
       'January',
