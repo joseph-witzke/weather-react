@@ -12,7 +12,7 @@ function Header() {
             <a href='/'>HOME</a>
           </li>
           <li id='compose'>
-            <a href='/compose'>FORCAST</a>
+            <a href='/forecast'>FORECAST</a>
           </li>
           <li id='about'>
             <a href='/about'>ABOUT US</a>

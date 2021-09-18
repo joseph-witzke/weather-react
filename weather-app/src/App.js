@@ -1,5 +1,6 @@
 //IMPORTS
 import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 //STYLES
 import './App.css';
@@ -8,6 +9,8 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CurrentWeather from './components/CurrentWeather';
+import Forecast from './components/Forecast';
+import About from './components/About';
 
 //API KEY
 const api = {
@@ -97,24 +100,23 @@ function App() {
 
   return (
     <div className='App'>
-      <Header />
-      <CurrentWeather date={dateBuilder} data={weather} />
-      {/* <h2>{dateBuilder(new Date())}</h2>
-      {typeof weather.main != 'undefined' ? (
-        <div>
-          <div>{weather.name}</div>
-          <div>{Math.round(weather.main.temp)} &deg;F</div>
-          <div>
-            <img
-              src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
-              alt='weather icon'
-            />
-          </div>
-        </div>
-      ) : (
-        ''
-      )} */}
-      <Footer />
+      <Switch>
+        <Route path='/about'>
+          <Header />
+          <About />
+          <Footer />
+        </Route>
+        <Route path='/forecast'>
+          <Header />
+          <Forecast />
+          <Footer />
+        </Route>
+        <Route path='/'>
+          <Header />
+          <CurrentWeather date={dateBuilder} data={weather} />
+          <Footer />
+        </Route>
+      </Switch>
     </div>
   );
 }
