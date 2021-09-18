@@ -39,11 +39,11 @@ function App() {
           // console.log(result);
         });
       await fetch(
-        `${api.base}/forecast?lat=${lat}&lon=${long}&appid=${api.key}`
+        `${api.base}/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${api.key}`
       )
         .then((res) => res.json())
         .then((result) => {
-          // setForecast(result);
+          setForecast(result);
           console.log(result);
         });
     };
@@ -119,17 +119,12 @@ function App() {
         </Route>
         <Route path='/forecast'>
           <Header />
-          <Forecast date={dateBuilder} data={weather} />
+          <Forecast date={dateBuilder} forecastData={forecast} />
           <Footer />
         </Route>
         <Route path='/'>
           <Header />
-          <CurrentWeather
-            date={dateBuilder}
-            data={weather}
-            latitude={lat}
-            longitude={long}
-          />
+          <CurrentWeather date={dateBuilder} weatherData={weather} />
           <Footer />
         </Route>
       </Switch>

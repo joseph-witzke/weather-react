@@ -1,17 +1,17 @@
 import React from 'react';
 
-function CurrentWeather({ date, data }) {
+function CurrentWeather({ date, weatherData }) {
   return (
     <div>
       <div>
         <h2>{date(new Date())}</h2>
-        {typeof data.main != 'undefined' ? (
+        {typeof weatherData.main != 'undefined' ? (
           <div>
-            <div>{data.name}</div>
-            <div>{Math.round(data.main.temp)} &deg;F</div>
+            <div>{weatherData.name}</div>
+            <div>{Math.round(weatherData.main.temp)} &deg;F</div>
             <div>
               <img
-                src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}
+                src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
                 alt='weather icon'
               />
             </div>
