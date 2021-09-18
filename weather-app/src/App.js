@@ -22,6 +22,7 @@ function App() {
   const [weather, setWeather] = useState([]);
   const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
+  const [forecast, setForecast] = useState([]);
 
   useEffect(() => {
     const getWeather = async () => {
@@ -35,11 +36,21 @@ function App() {
         .then((res) => res.json())
         .then((result) => {
           setWeather(result);
+          // console.log(result);
+        });
+      await fetch(
+        `${api.base}/forecast?lat=${lat}&lon=${long}&appid=${api.key}`
+      )
+        .then((res) => res.json())
+        .then((result) => {
+          // setForecast(result);
           console.log(result);
         });
     };
     getWeather();
   }, [lat, long]);
+
+  // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
   // const getWeather = (lat, lon) => {
   //   axios
@@ -108,12 +119,17 @@ function App() {
         </Route>
         <Route path='/forecast'>
           <Header />
-          <Forecast />
+          <Forecast date={dateBuilder} data={weather} />
           <Footer />
         </Route>
         <Route path='/'>
           <Header />
-          <CurrentWeather date={dateBuilder} data={weather} />
+          <CurrentWeather
+            date={dateBuilder}
+            data={weather}
+            latitude={lat}
+            longitude={long}
+          />
           <Footer />
         </Route>
       </Switch>
