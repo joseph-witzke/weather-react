@@ -10,6 +10,13 @@ function Forecast({ date, forecastData }) {
           <div>
             <div>{forecastData.city.name}</div>
             <div>{forecastData.list[0].main.temp} &deg;F</div>
+            <div>{forecastData.list[1].main.temp} &deg;F</div>
+            <div>
+              <img
+                src={`http://openweathermap.org/img/w/${forecastData.list[0].weather[0].icon}.png`}
+                alt='weather icon'
+              />
+            </div>
             {/* <div>
               <img
                 src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
