@@ -1,8 +1,7 @@
 import React from 'react';
-import WeatherCard from './WeatherCard';
 import moment from 'moment';
 
-function Forecast({ date, forecastData }) {
+function Forecast({ forecastData }) {
   return (
     <div>
       <h1>5-DAY FORECAST</h1>
@@ -96,12 +95,3 @@ function Forecast({ date, forecastData }) {
 }
 
 export default Forecast;
-
-{
-  /* <div>
-              <div>{forecastData.list[1].main.temp} &deg;F</div>
-              <div>{forecastData.list[1].dt_txt} &deg;F</div>
-            </div>
-
-            <div>{forecastData.list[2].main.temp} &deg;F</div> */
-}

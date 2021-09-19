@@ -1,6 +1,7 @@
 //IMPORTS
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { api } from './config';
 
 //STYLES
 import './App.css';
@@ -11,11 +12,6 @@ import Footer from './components/Footer';
 import CurrentWeather from './components/CurrentWeather';
 import Forecast from './components/Forecast';
 import About from './components/About';
-
-//API KEY
-
-const apiKey = '73039893ace3b87894afbabe8d916a2d';
-const urlBase = 'https://api.openweathermap.org/data/2.5';
 
 function App() {
   const [weather, setWeather] = useState([]);
@@ -30,15 +26,14 @@ function App() {
         setLong(position.coords.longitude);
       });
       await fetch(
-        `${urlBase}/weather?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`
+        `${api.base}/weather?lat=${lat}&lon=${long}&units=imperial&appid=${api.key}`
       )
         .then((res) => res.json())
         .then((result) => {
           setWeather(result);
-          console.log(result);
         });
       await fetch(
-        `${urlBase}/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`
+        `${api.base}/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${api.key}`
       )
         .then((res) => res.json())
         .then((result) => {
@@ -46,7 +41,6 @@ function App() {
           //   item.dt_txt.includes('18:00:00')
           // );
           setForecast(result);
-          console.log(result);
         });
     };
     getWeather();
