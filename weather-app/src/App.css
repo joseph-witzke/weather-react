@@ -40,6 +40,11 @@
   width: 30%;
 }
 
+.about-container {
+  text-align: left;
+  margin-left: 30%;
+  margin-top: 3%;
+}
 .forecast-header {
   margin-top: 3%;
 }
