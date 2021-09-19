@@ -13,10 +13,9 @@ import Forecast from './components/Forecast';
 import About from './components/About';
 
 //API KEY
-const api = {
-  key: '73039893ace3b87894afbabe8d916a2d',
-  base: 'https://api.openweathermap.org/data/2.5',
-};
+
+const apiKey = '73039893ace3b87894afbabe8d916a2d';
+const urlBase = 'https://api.openweathermap.org/data/2.5';
 
 function App() {
   const [weather, setWeather] = useState([]);
@@ -31,50 +30,27 @@ function App() {
         setLong(position.coords.longitude);
       });
       await fetch(
-        `${api.base}/weather?lat=${lat}&lon=${long}&units=imperial&appid=${api.key}`
+        `${urlBase}/weather?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`
       )
         .then((res) => res.json())
         .then((result) => {
           setWeather(result);
-          // console.log(result);
+          console.log(result);
         });
       await fetch(
-        `${api.base}/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${api.key}`
+        `${urlBase}/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`
       )
         .then((res) => res.json())
         .then((result) => {
+          // const daily = result.list.filter((item) =>
+          //   item.dt_txt.includes('18:00:00')
+          // );
           setForecast(result);
           console.log(result);
         });
     };
     getWeather();
   }, [lat, long]);
-
-  // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-
-  // const getWeather = (lat, lon) => {
-  //   axios
-  //     .get(`${api.base}/weather?lat=${lat}&lon=${lon}&appid=${api.key}`)
-  //     .then((res) => {
-  //       setWeather(res.data);
-  //       setTemp(res.data.main);
-  //       setIcon(res.data.weather[0].icon);
-  //       setLocation(res.data.coord);
-  //     })
-  //     .catch((err) => {
-  //       console.log({ message: err });
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   getPosition()
-  //     .then((position) => {
-  //       getWeather(location.lat, location.lon);
-  //     })
-  //     .catch((err) => {
-  //       console.log({ message: err });
-  //     });
-  // }, []);
 
   const dateBuilder = (item) => {
     let months = [
@@ -104,9 +80,9 @@ function App() {
     let day = days[item.getDay()];
     let date = item.getDate();
     let month = months[item.getMonth()];
-    let year = item.getFullYear();
+    // let year = item.getFullYear();
 
-    return `${day} ${date} ${month} ${year}`;
+    return `${day} ${date} ${month}`;
   };
 
   return (
