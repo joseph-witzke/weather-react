@@ -37,9 +37,6 @@ function App() {
       )
         .then((res) => res.json())
         .then((result) => {
-          // const daily = result.list.filter((item) =>
-          //   item.dt_txt.includes('18:00:00')
-          // );
           setForecast(result);
         });
     };
@@ -74,7 +71,6 @@ function App() {
     let day = days[item.getDay()];
     let date = item.getDate();
     let month = months[item.getMonth()];
-    // let year = item.getFullYear();
 
     return `${day} ${date} ${month}`;
   };
