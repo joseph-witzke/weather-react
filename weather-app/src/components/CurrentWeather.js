@@ -3,8 +3,8 @@ import React from 'react';
 function CurrentWeather({ date, weatherData }) {
   if (weatherData) {
     return (
-      <div className='container-fluid'>
-        <div>
+      <div className='current-container'>
+        <div className='current-content'>
           <h2>{date(new Date())}</h2>
           {typeof weatherData.main != 'undefined' ? (
             <div>

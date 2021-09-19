@@ -3,21 +3,30 @@
 }
 
 .container-fluid {
-  width: 25%;
-  height: 35vh;
   padding-top: 70px;
   padding-bottom: 70px;
-  margin-top: 8%;
-  border: 1px solid gray;
-  border-radius: 10px;
-  background-color: whitesmoke;
-  font-size: 2rem;
 }
 
 .container-fluid img {
   width: 20%;
 }
 
+.current-container {
+  display: flex;
+  justify-content: center;
+}
+.current-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-top: 8%;
+  background-color: whitesmoke;
+  font-size: 2rem;
+  width: 25%;
+  height: 35vh;
+}
 .card-container {
   display: flex;
   justify-content: space-around;
