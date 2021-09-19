@@ -15,7 +15,7 @@ function Header() {
             <a href='/forecast'>FORECAST</a>
           </li>
           <li id='about'>
-            <a href='/about'>ABOUT US</a>
+            <a href='/about'>ABOUT</a>
           </li>
         </ul>
       </div>

@@ -3,8 +3,45 @@
 }
 
 .container-fluid {
+  width: 25%;
+  height: 35vh;
   padding-top: 70px;
   padding-bottom: 70px;
+  margin-top: 8%;
+  border: 1px solid gray;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  font-size: 2rem;
+}
+
+.container-fluid img {
+  width: 20%;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50vh;
+}
+
+.card {
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 15%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: whitesmoke;
+}
+
+.card img {
+  width: 30%;
+}
+
+.forecast-header {
+  margin-top: 3%;
 }
 
 .navbar {
