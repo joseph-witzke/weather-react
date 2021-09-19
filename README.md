@@ -9,7 +9,11 @@ through the list array -- ultimately allowing me to make a forecastCard componen
 than coding each
 
 Add 5-day forecast that includes each 3-hour update
+
 Refactor so that my App.js is only rendering my components
+
 Enhance styling of the pages
+
 Include a loading feature, in case of delays for content
+
 Expand test coverage
