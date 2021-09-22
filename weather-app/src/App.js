@@ -37,7 +37,7 @@ function App() {
       )
         .then((res) => res.json())
         .then((result) => {
-          setForecast(result);
+          setForecast(result.list);
         });
     };
     getWeather();
@@ -85,7 +85,7 @@ function App() {
         </Route>
         <Route path='/forecast'>
           <Header />
-          <Forecast date={dateBuilder} forecastData={forecast} />
+          <Forecast forecastData={forecast} weather={weather} />
           <Footer />
         </Route>
         <Route path='/'>
